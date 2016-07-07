@@ -1,0 +1,5 @@
+D:\Epam\EPAM.Summer.Kozlov.04\Task02\bin\Debug\Task02.dll
+D:\Epam\EPAM.Summer.Kozlov.04\Task02\bin\Debug\Task02.pdb
+D:\Epam\EPAM.Summer.Kozlov.04\Task02\obj\Debug\Task02.csprojResolveAssemblyReference.cache
+D:\Epam\EPAM.Summer.Kozlov.04\Task02\obj\Debug\Task02.dll
+D:\Epam\EPAM.Summer.Kozlov.04\Task02\obj\Debug\Task02.pdb
