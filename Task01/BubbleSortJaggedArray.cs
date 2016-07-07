@@ -5,6 +5,14 @@ namespace Task01
 {
     public static class BubbleSortJaggedArray
     {
+        /// <summary>
+        /// Sorting jagged massive in:
+        /// order of increasing (decreasing) the amounts of elements rows of the matrix;
+        /// order of increasing(decreasing) the maximum rows of elements;
+        /// ascending order(descending) of minimal elements of matrix rows.
+        /// </summary>
+        /// <param name="array">input array</param>
+        /// <returns>Sorted array</returns>
         public static int[][] SortAscendingSumOfElems(int[][] array)
         {
             if (array.Length == 0)
