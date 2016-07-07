@@ -7,7 +7,13 @@ namespace Task02
     {
         private string name;
         private decimal revenue;
-        private string contactPhone; 
+        private string contactPhone;
+        /// <summary>
+        /// This object have name, revenue, phone and used to provide this information.
+        /// </summary>
+        /// <param name="name">name of customer</param>
+        /// <param name="revenue">revenue of customer</param>
+        /// <param name="contactPhone">Phone of customer</param>
         public Customer(string name, decimal revenue, string contactPhone)
         {
             this.name = name;
@@ -29,7 +35,11 @@ namespace Task02
         {
             get { return contactPhone; }
         }
-
+        /// <summary>
+        /// The method converts the string value to information on the subject in the right format.
+        /// </summary>
+        /// <param name="format">formatting type</param>
+        /// <returns>Information about the object in the right format</returns>
         public string ToString(string format)
         {
             if (format == null)
