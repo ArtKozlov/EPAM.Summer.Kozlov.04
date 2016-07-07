@@ -13,6 +13,7 @@ namespace Task01
         /// </summary>
         /// <param name="array">input array</param>
         /// <returns>Sorted array</returns>
+        
         public static int[][] SortAscendingSumOfElems(int[][] array)
         {
             if (array.Length == 0)
@@ -22,11 +23,11 @@ namespace Task01
 
             for (int i = 0; i < array.Length - 1; i++)
             {
-                for (int j = 0; j < array[j].Length - i - 1; j++)
+                for (int j = 1; j < array[j].Length - i; j++)
                 {
-                    if (array[j].Sum() > array[j + 1].Sum())
+                    if (array[j-1].Sum() > array[j].Sum())
                     {
-                        ReplaceRow(ref array[j], ref array[j+1]);
+                        ReplaceRow(ref array[j-1], ref array[j]);
                     }
                 }
 
@@ -44,11 +45,11 @@ namespace Task01
 
             for (int i = 0; i < array.Length - 1; i++)
             {
-                for (int j = 0; j < array[j].Length - i - 1; j++)
+                for (int j = 1; j < array[j].Length - i; j++)
                 {
-                    if (array[j].Sum() < array[j + 1].Sum())
+                    if (array[j - 1].Sum() < array[j].Sum())
                     {
-                        ReplaceRow(ref array[j], ref array[j + 1]);
+                        ReplaceRow(ref array[j - 1], ref array[j]);
                     }
                 }
 
@@ -66,11 +67,11 @@ namespace Task01
 
             for (int i = 0; i < array.Length - 1; i++)
             {
-                for (int j = 0; j < array[j].Length - i - 1; j++)
+                for (int j = 1; j < array[j].Length - i; j++)
                 {
-                    if (array[j].Max() > array[j + 1].Max())
+                    if (array[j - 1].Max() > array[j].Max())
                     {
-                        ReplaceRow(ref array[j], ref array[j + 1]);
+                        ReplaceRow(ref array[j - 1], ref array[j]);
                     }
                 }
 
@@ -88,11 +89,11 @@ namespace Task01
 
             for (int i = 0; i < array.Length - 1; i++)
             {
-                for (int j = 0; j < array[j].Length - i - 1; j++)
+                for (int j = 1; j < array[j].Length - i; j++)
                 {
-                    if (array[j].Max() < array[j + 1].Max())
+                    if (array[j - 1].Max() < array[j].Max())
                     {
-                        ReplaceRow(ref array[j], ref array[j + 1]);
+                        ReplaceRow(ref array[j - 1], ref array[j]);
                     }
                 }
 
@@ -110,11 +111,11 @@ namespace Task01
 
             for (int i = 0; i < array.Length - 1; i++)
             {
-                for (int j = 0; j < array[j].Length - i - 1; j++)
+                for (int j = 1; j < array[j].Length - i; j++)
                 {
-                    if (array[j].Min() > array[j + 1].Min())
+                    if (array[j - 1].Min() > array[j].Min())
                     {
-                        ReplaceRow(ref array[j], ref array[j + 1]);
+                        ReplaceRow(ref array[j - 1], ref array[j]);
                     }
                 }
 
@@ -132,11 +133,11 @@ namespace Task01
 
             for (int i = 0; i < array.Length - 1; i++)
             {
-                for (int j = 0; j < array[j].Length - i - 1; j++)
+                for (int j = 1; j < array[j].Length - i; j++)
                 {
-                    if (array[j].Min() < array[j + 1].Min())
+                    if (array[j - 1].Min() < array[j].Min())
                     {
-                        ReplaceRow(ref array[j], ref array[j + 1]);
+                        ReplaceRow(ref array[j - 1], ref array[j]);
                     }
                 }
 
@@ -145,7 +146,7 @@ namespace Task01
             return array;
         }
 
-        public static void ReplaceRow(ref int[] firstArray, ref int[] secondArray)
+        private static void ReplaceRow(ref int[] firstArray, ref int[] secondArray)
         {
             int[] tempArray = firstArray;
             firstArray = secondArray;
