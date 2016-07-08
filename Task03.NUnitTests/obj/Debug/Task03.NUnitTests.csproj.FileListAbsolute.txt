@@ -1,0 +1,9 @@
+D:\Epam\EPAM.Summer.Kozlov.04\Task03.NUnitTests\bin\Debug\Task03.NUnitTests.dll
+D:\Epam\EPAM.Summer.Kozlov.04\Task03.NUnitTests\bin\Debug\Task03.NUnitTests.pdb
+D:\Epam\EPAM.Summer.Kozlov.04\Task03.NUnitTests\bin\Debug\nunit.framework.dll
+D:\Epam\EPAM.Summer.Kozlov.04\Task03.NUnitTests\bin\Debug\Task03.dll
+D:\Epam\EPAM.Summer.Kozlov.04\Task03.NUnitTests\bin\Debug\Task03.pdb
+D:\Epam\EPAM.Summer.Kozlov.04\Task03.NUnitTests\bin\Debug\nunit.framework.xml
+D:\Epam\EPAM.Summer.Kozlov.04\Task03.NUnitTests\obj\Debug\Task03.NUnitTests.csprojResolveAssemblyReference.cache
+D:\Epam\EPAM.Summer.Kozlov.04\Task03.NUnitTests\obj\Debug\Task03.NUnitTests.dll
+D:\Epam\EPAM.Summer.Kozlov.04\Task03.NUnitTests\obj\Debug\Task03.NUnitTests.pdb
