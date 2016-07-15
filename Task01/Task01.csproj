@@ -41,13 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BubbleSortJaggedArray.cs" />
-    <Compile Include="CompareAscendingMaxOfElems.cs" />
-    <Compile Include="CompareAscendingMinOfElems.cs" />
-    <Compile Include="CompareAscendingSumOfElems.cs" />
-    <Compile Include="CompareDecreasingMaxOfElems.cs" />
-    <Compile Include="CompareDecreasingMinOfElems.cs" />
-    <Compile Include="CompareDecreasingSumOfElems.cs" />
-    <Compile Include="IArrayCompare.cs" />
+    <Compile Include="IArrayComparer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -2,7 +2,7 @@
 
 namespace Task01
 {
-    public interface IArrayCompare
+    public interface IArrayComparer
     {
         bool Compare(int[] x, int[] y);
     }

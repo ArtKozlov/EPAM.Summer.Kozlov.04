@@ -45,6 +45,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BubbleSortJaggedArrayTests.cs" />
+    <Compile Include="ComparerAscendingMaxOfElems.cs" />
+    <Compile Include="ComparerAscendingMinOfElems.cs" />
+    <Compile Include="ComparerAscendingSumOfElems.cs" />
+    <Compile Include="ComparerDecreasingMaxOfElems.cs" />
+    <Compile Include="ComparerDecreasingMinOfElems.cs" />
+    <Compile Include="ComparerDecreasingSumOfElems.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

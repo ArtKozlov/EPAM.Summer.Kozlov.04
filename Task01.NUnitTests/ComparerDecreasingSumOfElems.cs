@@ -1,13 +1,13 @@
-﻿using System;
+﻿
 using System.Linq;
 
 namespace Task01
 {
-    public class CompareAscendingMaxOfElems : IArrayCompare
+    public class ComparerDecreasingSumOfElems : IArrayComparer
     {
         public bool Compare(int[] lhs, int[] rhs)
         {
-            if (lhs.Max() > rhs.Max())
+            if (lhs.Sum() < rhs.Sum())
             {
                 return true;
             }

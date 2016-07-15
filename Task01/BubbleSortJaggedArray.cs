@@ -12,16 +12,12 @@ namespace Task01
         /// <param name="array">input jagged array</param>
         /// <param name="comparer">It takes an object implements an interface IArrayCompare</param>
         /// <returns>Sorted array</returns>
-        public static int[][] Sort(int[][] array, IArrayCompare comparer)
+        public static int[][] Sort(int[][] array, IArrayComparer comparer)
         {
+            if (ReferenceEquals(null, array) || ReferenceEquals(null, comparer))
+                throw new ArgumentNullException();
             if (array.Length == 0)
-            {
                 throw new ArgumentException("Array is empty!");
-            }
-            if (array == null)
-            {
-                throw new NullReferenceException();
-            }
 
             for (int i = 0; i < array.Length - 1; i++)
             {

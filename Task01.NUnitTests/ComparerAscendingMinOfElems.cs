@@ -3,11 +3,11 @@ using System.Linq;
 
 namespace Task01
 {
-    public class CompareDecreasingMaxOfElems : IArrayCompare
+    public class ComparerAscendingMinOfElems : IArrayComparer
     {
         public bool Compare(int[] lhs, int[] rhs)
         {
-            if (lhs.Max() < rhs.Max())
+            if (lhs.Min() > rhs.Min())
             {
                 return true;
             }
