@@ -23,7 +23,7 @@ namespace Task01
             {
                 for (int j = 1; j < array[j].Length - i; j++)
                 {
-                    if (comparer.Compare(array[j-1], array[j]))
+                    if (comparer.Compare(array[j-1], array[j]) > 0)
                     {
                         Swap(ref array[j-1], ref array[j]);
                     }

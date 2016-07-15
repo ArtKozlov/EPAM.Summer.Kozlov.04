@@ -13,56 +13,56 @@ namespace Task01.NUnitTests
     {
 
         [Test, TestCaseSource(typeof(ProviderArrayForSortWithDelegate), nameof(ProviderArrayForSortWithDelegate.CasesForSortAscendingSumOfElems))]
-        public void SortAscendingSumOfElemsTest(int[][] array, ComparerDelegate comparer, int[][] expectedArray)
+        public void SortAscendingSumOfElemsTest(int[][] array, Func<int[],int[],int> comparerFunc, int[][] expectedArray)
         {
-            array = Sort(array, comparer);
+            array = Sort(array, comparerFunc);
             CollectionAssert.AreEqual(expectedArray, array);
         }
 
         [Test, TestCaseSource(typeof(ProviderArrayForSortWithDelegate), nameof(ProviderArrayForSortWithDelegate.CasesForSortDecreasingSumOfElems))]
-        public void SortDecreasingSumOfElemsTest(int[][] array, ComparerDelegate comparer, int[][] expectedArray)
+        public void SortDecreasingSumOfElemsTest(int[][] array, Func<int[], int[], int> comparerFunc, int[][] expectedArray)
         {
-            expectedArray = Sort(array, comparer);
+            expectedArray = Sort(array, comparerFunc);
             CollectionAssert.AreEqual(expectedArray, array);
         }
 
         [Test, TestCaseSource(typeof(ProviderArrayForSortWithDelegate), nameof(ProviderArrayForSortWithDelegate.CasesForSortAscendingMaxOfElems))]
-        public void SortAscendingMaxOfElemsTest(int[][] array, ComparerDelegate comparer, int[][] expectedArray)
+        public void SortAscendingMaxOfElemsTest(int[][] array, Func<int[], int[], int> comparerFunc, int[][] expectedArray)
         {
-            expectedArray = Sort(array, comparer);
+            expectedArray = Sort(array, comparerFunc);
             CollectionAssert.AreEqual(expectedArray, array);
         }
 
         [Test, TestCaseSource(typeof(ProviderArrayForSortWithDelegate), nameof(ProviderArrayForSortWithDelegate.CasesForSortDecreasingMaxOfElems))]
-        public void SortDecreasingMaxOfElemsTest(int[][] array, ComparerDelegate comparer, int[][] expectedArray)
+        public void SortDecreasingMaxOfElemsTest(int[][] array, Func<int[], int[], int> comparerFunc, int[][] expectedArray)
         {
-            expectedArray = Sort(array, comparer);
+            expectedArray = Sort(array, comparerFunc);
             CollectionAssert.AreEqual(expectedArray, array);
         }
 
         [Test, TestCaseSource(typeof(ProviderArrayForSortWithDelegate), nameof(ProviderArrayForSortWithDelegate.CasesForSortAscendingMinOfElems))]
-        public void SortAscendingMinOfElemsTest(int[][] array, ComparerDelegate comparer, int[][] expectedArray)
+        public void SortAscendingMinOfElemsTest(int[][] array, Func<int[], int[], int> comparerFunc, int[][] expectedArray)
         {
-            expectedArray = Sort(array, comparer);
+            expectedArray = Sort(array, comparerFunc);
             CollectionAssert.AreEqual(expectedArray, array);
         }
 
         [Test, TestCaseSource(typeof(ProviderArrayForSortWithDelegate), nameof(ProviderArrayForSortWithDelegate.CasesForSortDecreasingMinOfElems))]
-        public void SortDecreasingMinOfElemsTest(int[][] array, ComparerDelegate comparer, int[][] expectedArray)
+        public void SortDecreasingMinOfElemsTest(int[][] array, Func<int[], int[], int> comparerFunc, int[][] expectedArray)
         {
-            expectedArray = Sort(array, comparer);
+            expectedArray = Sort(array, comparerFunc);
             CollectionAssert.AreEqual(expectedArray, array);
         }
     }
 
     public class ProviderArrayForSortWithDelegate
     {
-        static ComparerDelegate comparerAscendingSumOfElems = new ComparerAscendingSumOfElems().Compare;
-        static ComparerDelegate comparerDecreasingSumOfElems = new ComparerDecreasingSumOfElems().Compare;
-        static ComparerDelegate comparerAscendingMaxOfElems = new ComparerAscendingMaxOfElems().Compare;
-        static ComparerDelegate comparerDecreasingMaxOfElems = new ComparerDecreasingMaxOfElems().Compare;
-        static ComparerDelegate comparerAscendingMinOfElems = new ComparerAscendingMinOfElems().Compare;
-        static ComparerDelegate comparerDecreasingMinOfElems = new ComparerDecreasingMinOfElems().Compare;
+        static Func<int[], int[], int> comparerAscendingSumOfElems = new ComparerAscendingSumOfElems().Compare;
+        static Func<int[], int[], int> comparerDecreasingSumOfElems = new ComparerDecreasingSumOfElems().Compare;
+        static Func<int[], int[], int> comparerAscendingMaxOfElems = new ComparerAscendingMaxOfElems().Compare;
+        static Func<int[], int[], int> comparerDecreasingMaxOfElems = new ComparerDecreasingMaxOfElems().Compare;
+        static Func<int[], int[], int> comparerAscendingMinOfElems = new ComparerAscendingMinOfElems().Compare;
+        static Func<int[], int[], int> comparerDecreasingMinOfElems = new ComparerDecreasingMinOfElems().Compare;
         #region testcases for sum
 
         public static IEnumerable CasesForSortAscendingSumOfElems

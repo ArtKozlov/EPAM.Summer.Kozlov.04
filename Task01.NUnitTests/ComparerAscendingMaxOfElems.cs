@@ -5,13 +5,17 @@ namespace Task01
 {
     public class ComparerAscendingMaxOfElems : IArrayComparer
     {
-        public bool Compare(int[] lhs, int[] rhs)
+        public int Compare(int[] lhs, int[] rhs)
         {
             if (lhs.Max() > rhs.Max())
             {
-                return true;
+                return 1;
             }
-            return false;
+            if (lhs.Max() == rhs.Max())
+            {
+                return 0;
+            }
+            return -1;
         }
     }
 }

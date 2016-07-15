@@ -8,26 +8,24 @@ namespace Task01
 {
     public static class SortJaggedArrayWithInterface
     {
-        public delegate bool ComparerDelegate(int[] lhs, int[] rhs);
         /// <summary>
         /// Sorting jagged massive in order of increasing the amounts of elements rows of the matrix.
         /// </summary>
         /// <param name="array">input jagged array</param>
         /// <param name="comparer">It takes an object implements an interface IArrayCompare</param>
         /// <returns>Sorted array</returns>
-        public static int[][] Sort(int[][] array, IArrayComparer comparer)
+        private static int[][] Sort(int[][] array, Func<int[],int[],int> comparer)
         {
             if (ReferenceEquals(null, array) || ReferenceEquals(null, comparer))
                 throw new ArgumentNullException();
             if (array.Length == 0)
                 throw new ArgumentException("Array is empty!");
-
-            ComparerDelegate secondComparer = HideCompare(comparer);
+            
             for (int i = 0; i < array.Length - 1; i++)
             {
                 for (int j = 1; j < array[j].Length - i; j++)
                 {
-                    if (secondComparer(array[j - 1], array[j]))
+                    if (comparer(array[j - 1], array[j]) > 0)
                     {
                         Swap(ref array[j - 1], ref array[j]);
                     }
@@ -37,11 +35,8 @@ namespace Task01
 
             return array;
         }
-        private static ComparerDelegate HideCompare(IArrayComparer comparer)
-        {
-            ComparerDelegate com = comparer.Compare;
-            return com;
-        }
+
+        public static int[][] Sort(int[][] array, IArrayComparer comparer) => Sort(array, comparer.Compare);
         /// <summary>
         /// Replace rows two massive.
         /// </summary>

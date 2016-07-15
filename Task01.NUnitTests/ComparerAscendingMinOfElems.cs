@@ -5,13 +5,17 @@ namespace Task01
 {
     public class ComparerAscendingMinOfElems : IArrayComparer
     {
-        public bool Compare(int[] lhs, int[] rhs)
+        public int Compare(int[] lhs, int[] rhs)
         {
             if (lhs.Min() > rhs.Min())
             {
-                return true;
+                return 1;
             }
-            return false;
+            if (lhs.Min() == rhs.Min())
+            {
+                return 0;
+            }
+            return -1;
         }
     }
 }

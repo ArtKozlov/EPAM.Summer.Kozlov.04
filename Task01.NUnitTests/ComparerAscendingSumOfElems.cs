@@ -5,13 +5,17 @@ namespace Task01
 {
     public class ComparerAscendingSumOfElems : IArrayComparer
     {
-        public bool Compare(int[] lhs, int[] rhs)
+        public int Compare(int[] lhs, int[] rhs)
         {
             if (lhs.Sum() > rhs.Sum())
             {
-                return true;
+                return 1;
             }
-            return false;
+            if (lhs.Sum() == rhs.Sum())
+            {
+                return 0;
+            }
+            return -1;
         }
     }
 }
