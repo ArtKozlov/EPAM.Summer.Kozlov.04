@@ -1,49 +1,53 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using NUnit.Framework;
-using static Task01.BubbleSortJaggedArray;
+using static Task01.SortJaggedArrayWithInterface;
 
 namespace Task01.NUnitTests
 {
-    public class BubbleSortJaggedArrayTests
+    class SortJaggedArrayWithInterfaceTests
     {
 
-        [Test, TestCaseSource(typeof(ProviderArray), nameof(ProviderArray.CasesForSortAscendingSumOfElems))]
+        [Test, TestCaseSource(typeof(ProviderArrayForSortWithInterface), nameof(ProviderArrayForSortWithInterface.CasesForSortAscendingSumOfElems))]
         public void SortAscendingSumOfElemsTest(int[][] array, IArrayComparer comparer, int[][] expectedArray)
         {
             array = Sort(array, comparer);
-            CollectionAssert.AreEqual(expectedArray, array); 
+            CollectionAssert.AreEqual(expectedArray, array);
         }
 
-        [Test, TestCaseSource(typeof(ProviderArray), nameof(ProviderArray.CasesForSortDecreasingSumOfElems))]
+        [Test, TestCaseSource(typeof(ProviderArrayForSortWithInterface), nameof(ProviderArrayForSortWithInterface.CasesForSortDecreasingSumOfElems))]
         public void SortDecreasingSumOfElemsTest(int[][] array, IArrayComparer comparer, int[][] expectedArray)
         {
             expectedArray = Sort(array, comparer);
             CollectionAssert.AreEqual(expectedArray, array);
         }
 
-        [Test, TestCaseSource(typeof(ProviderArray), nameof(ProviderArray.CasesForSortAscendingMaxOfElems))]
+        [Test, TestCaseSource(typeof(ProviderArrayForSortWithInterface), nameof(ProviderArrayForSortWithInterface.CasesForSortAscendingMaxOfElems))]
         public void SortAscendingMaxOfElemsTest(int[][] array, IArrayComparer comparer, int[][] expectedArray)
         {
             expectedArray = Sort(array, comparer);
             CollectionAssert.AreEqual(expectedArray, array);
         }
 
-        [Test, TestCaseSource(typeof(ProviderArray), nameof(ProviderArray.CasesForSortDecreasingMaxOfElems))]
+        [Test, TestCaseSource(typeof(ProviderArrayForSortWithInterface), nameof(ProviderArrayForSortWithInterface.CasesForSortDecreasingMaxOfElems))]
         public void SortDecreasingMaxOfElemsTest(int[][] array, IArrayComparer comparer, int[][] expectedArray)
         {
             expectedArray = Sort(array, comparer);
             CollectionAssert.AreEqual(expectedArray, array);
         }
 
-        [Test, TestCaseSource(typeof(ProviderArray), nameof(ProviderArray.CasesForSortAscendingMinOfElems))]
+        [Test, TestCaseSource(typeof(ProviderArrayForSortWithInterface), nameof(ProviderArrayForSortWithInterface.CasesForSortAscendingMinOfElems))]
         public void SortAscendingMinOfElemsTest(int[][] array, IArrayComparer comparer, int[][] expectedArray)
         {
             expectedArray = Sort(array, comparer);
             CollectionAssert.AreEqual(expectedArray, array);
         }
 
-        [Test, TestCaseSource(typeof(ProviderArray), nameof(ProviderArray.CasesForSortDecreasingMinOfElems))]
+        [Test, TestCaseSource(typeof(ProviderArrayForSortWithInterface), nameof(ProviderArrayForSortWithInterface.CasesForSortDecreasingMinOfElems))]
         public void SortDecreasingMinOfElemsTest(int[][] array, IArrayComparer comparer, int[][] expectedArray)
         {
             expectedArray = Sort(array, comparer);
@@ -51,7 +55,7 @@ namespace Task01.NUnitTests
         }
     }
 
-    public class ProviderArray
+    public class ProviderArrayForSortWithInterface
     {
         #region testcases for sum
         public static IEnumerable CasesForSortAscendingSumOfElems

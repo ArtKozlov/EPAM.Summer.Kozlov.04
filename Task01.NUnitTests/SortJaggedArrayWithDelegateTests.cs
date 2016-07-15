@@ -1,59 +1,70 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using NUnit.Framework;
-using static Task01.BubbleSortJaggedArray;
+using static Task01.SortJaggedArrayWithDelegate;
 
 namespace Task01.NUnitTests
 {
-    public class BubbleSortJaggedArrayTests
+    class SortJaggedArrayWithDelegateTests
     {
 
-        [Test, TestCaseSource(typeof(ProviderArray), nameof(ProviderArray.CasesForSortAscendingSumOfElems))]
-        public void SortAscendingSumOfElemsTest(int[][] array, IArrayComparer comparer, int[][] expectedArray)
+        [Test, TestCaseSource(typeof(ProviderArrayForSortWithDelegate), nameof(ProviderArrayForSortWithDelegate.CasesForSortAscendingSumOfElems))]
+        public void SortAscendingSumOfElemsTest(int[][] array, ComparerDelegate comparer, int[][] expectedArray)
         {
             array = Sort(array, comparer);
-            CollectionAssert.AreEqual(expectedArray, array); 
+            CollectionAssert.AreEqual(expectedArray, array);
         }
 
-        [Test, TestCaseSource(typeof(ProviderArray), nameof(ProviderArray.CasesForSortDecreasingSumOfElems))]
-        public void SortDecreasingSumOfElemsTest(int[][] array, IArrayComparer comparer, int[][] expectedArray)
+        [Test, TestCaseSource(typeof(ProviderArrayForSortWithDelegate), nameof(ProviderArrayForSortWithDelegate.CasesForSortDecreasingSumOfElems))]
+        public void SortDecreasingSumOfElemsTest(int[][] array, ComparerDelegate comparer, int[][] expectedArray)
         {
             expectedArray = Sort(array, comparer);
             CollectionAssert.AreEqual(expectedArray, array);
         }
 
-        [Test, TestCaseSource(typeof(ProviderArray), nameof(ProviderArray.CasesForSortAscendingMaxOfElems))]
-        public void SortAscendingMaxOfElemsTest(int[][] array, IArrayComparer comparer, int[][] expectedArray)
+        [Test, TestCaseSource(typeof(ProviderArrayForSortWithDelegate), nameof(ProviderArrayForSortWithDelegate.CasesForSortAscendingMaxOfElems))]
+        public void SortAscendingMaxOfElemsTest(int[][] array, ComparerDelegate comparer, int[][] expectedArray)
         {
             expectedArray = Sort(array, comparer);
             CollectionAssert.AreEqual(expectedArray, array);
         }
 
-        [Test, TestCaseSource(typeof(ProviderArray), nameof(ProviderArray.CasesForSortDecreasingMaxOfElems))]
-        public void SortDecreasingMaxOfElemsTest(int[][] array, IArrayComparer comparer, int[][] expectedArray)
+        [Test, TestCaseSource(typeof(ProviderArrayForSortWithDelegate), nameof(ProviderArrayForSortWithDelegate.CasesForSortDecreasingMaxOfElems))]
+        public void SortDecreasingMaxOfElemsTest(int[][] array, ComparerDelegate comparer, int[][] expectedArray)
         {
             expectedArray = Sort(array, comparer);
             CollectionAssert.AreEqual(expectedArray, array);
         }
 
-        [Test, TestCaseSource(typeof(ProviderArray), nameof(ProviderArray.CasesForSortAscendingMinOfElems))]
-        public void SortAscendingMinOfElemsTest(int[][] array, IArrayComparer comparer, int[][] expectedArray)
+        [Test, TestCaseSource(typeof(ProviderArrayForSortWithDelegate), nameof(ProviderArrayForSortWithDelegate.CasesForSortAscendingMinOfElems))]
+        public void SortAscendingMinOfElemsTest(int[][] array, ComparerDelegate comparer, int[][] expectedArray)
         {
             expectedArray = Sort(array, comparer);
             CollectionAssert.AreEqual(expectedArray, array);
         }
 
-        [Test, TestCaseSource(typeof(ProviderArray), nameof(ProviderArray.CasesForSortDecreasingMinOfElems))]
-        public void SortDecreasingMinOfElemsTest(int[][] array, IArrayComparer comparer, int[][] expectedArray)
+        [Test, TestCaseSource(typeof(ProviderArrayForSortWithDelegate), nameof(ProviderArrayForSortWithDelegate.CasesForSortDecreasingMinOfElems))]
+        public void SortDecreasingMinOfElemsTest(int[][] array, ComparerDelegate comparer, int[][] expectedArray)
         {
             expectedArray = Sort(array, comparer);
             CollectionAssert.AreEqual(expectedArray, array);
         }
     }
 
-    public class ProviderArray
+    public class ProviderArrayForSortWithDelegate
     {
+        static ComparerDelegate comparerAscendingSumOfElems = new ComparerAscendingSumOfElems().Compare;
+        static ComparerDelegate comparerDecreasingSumOfElems = new ComparerDecreasingSumOfElems().Compare;
+        static ComparerDelegate comparerAscendingMaxOfElems = new ComparerAscendingMaxOfElems().Compare;
+        static ComparerDelegate comparerDecreasingMaxOfElems = new ComparerDecreasingMaxOfElems().Compare;
+        static ComparerDelegate comparerAscendingMinOfElems = new ComparerAscendingMinOfElems().Compare;
+        static ComparerDelegate comparerDecreasingMinOfElems = new ComparerDecreasingMinOfElems().Compare;
         #region testcases for sum
+
         public static IEnumerable CasesForSortAscendingSumOfElems
         {
             get
@@ -64,7 +75,7 @@ namespace Task01.NUnitTests
                     new int[] {0, -22, 41, 65},
                     new int[] {114, 20}
                 },
-                new ComparerAscendingSumOfElems(),
+                comparerAscendingSumOfElems,
                 new int[][]
                 {
                     new int[] {0, -22, 41, 65},
@@ -77,7 +88,7 @@ namespace Task01.NUnitTests
                     new int[] {0, -22, 41, 65},
                     new int[] {114, 262}
                 },
-                new ComparerAscendingSumOfElems(),
+                comparerAscendingSumOfElems,
                 new int[][]
                 {
                     new int[] {11, -33, 54, -78, -97},
@@ -90,7 +101,7 @@ namespace Task01.NUnitTests
                     new int[] {0, 43, 56, 7, 9},
                     new int[] {114, 622}
                 },
-                new ComparerAscendingSumOfElems(),
+                comparerAscendingSumOfElems,
                 new int[][]
                 {
                     new int[] {0, 43, 56, 7, 9},
@@ -111,7 +122,7 @@ namespace Task01.NUnitTests
                     new int[] {0, -22, 41, 65},
                     new int[] {114, -262}
                 },
-                new ComparerDecreasingSumOfElems(),
+                comparerDecreasingSumOfElems,
                 new int[][]
                 {
 
@@ -125,7 +136,7 @@ namespace Task01.NUnitTests
                     new int[] {0, -22, 41, 65},
                     new int[] {114, -262}
                 },
-                new ComparerDecreasingSumOfElems(),
+                comparerDecreasingSumOfElems,
                 new int[][]
                 {
                     new int[] {0, -22, 41, 65},
@@ -138,7 +149,7 @@ namespace Task01.NUnitTests
                     new int[] {0, 25, 4456, 4566},
                     new int[] {114, 622}
                 },
-                new ComparerDecreasingSumOfElems(),
+                comparerDecreasingSumOfElems,
                 new int[][]
                 {
                     new int[] {0, 25, 4456, 4566},
@@ -160,7 +171,7 @@ namespace Task01.NUnitTests
                     new int[] {0, -22, 41, 65},
                     new int[] {114, -262}
                 },
-                new ComparerAscendingMaxOfElems(),
+                comparerAscendingMaxOfElems,
                 new int[][]
                 {
                     new int[] {0, -22, 41, 65},
@@ -173,7 +184,7 @@ namespace Task01.NUnitTests
                     new int[] {0, -22, 41, 65},
                     new int[] {114, -262}
                 },
-                new ComparerAscendingMaxOfElems(),
+                comparerAscendingMaxOfElems,
                 new int[][]
                 {
                     new int[] {0, -22, 41, 65},
@@ -186,7 +197,7 @@ namespace Task01.NUnitTests
                     new int[] {0, 25, 4456, 4566},
                     new int[] {114, 622}
                 },
-                new ComparerAscendingMaxOfElems(),
+                comparerAscendingMaxOfElems,
                 new int[][]
                 {
                     new int[] {0, 43, 56, 7, 9},
@@ -207,7 +218,7 @@ namespace Task01.NUnitTests
                     new int[] {0, -22, 41, 65},
                     new int[] {114, -262}
                 },
-                new ComparerDecreasingMaxOfElems(),
+                comparerDecreasingMaxOfElems,
                 new int[][]
                 {
                     new int[] {114, -262},
@@ -220,7 +231,7 @@ namespace Task01.NUnitTests
                     new int[] {0, -22, 41, 65},
                     new int[] {114, -262}
                 },
-                new ComparerDecreasingMaxOfElems(),
+                comparerDecreasingMaxOfElems,
                 new int[][]
                 {
                     new int[] {114, -262},
@@ -233,7 +244,7 @@ namespace Task01.NUnitTests
                     new int[] {0, 25, 4456, 4566},
                     new int[] {114, 622}
                 },
-                new ComparerDecreasingMaxOfElems(),
+                comparerDecreasingMaxOfElems,
                 new int[][]
                 {
                     new int[] {0, 25, 4456, 4566},
@@ -256,7 +267,7 @@ namespace Task01.NUnitTests
                     new int[] {0, -22, 41, 65},
                     new int[] {114, -262}
                 },
-                new ComparerAscendingMinOfElems(),
+                comparerAscendingMinOfElems,
                 new int[][]
                 {
                     new int[] {0, -22, 41, 65},
@@ -269,7 +280,7 @@ namespace Task01.NUnitTests
                     new int[] {0, -22, 41, 65},
                     new int[] {114, -262}
                 },
-                new ComparerAscendingMinOfElems(),
+                comparerAscendingMinOfElems,
                 new int[][]
                 {
                     new int[] {0, -22, 41, 65},
@@ -282,7 +293,7 @@ namespace Task01.NUnitTests
                     new int[] {0, 25, 4456, 4566},
                     new int[] {114, 622}
                 },
-                new ComparerAscendingMinOfElems(),
+                comparerAscendingMinOfElems,
                 new int[][]
                 {
                     new int[] {0, 43, 56, 7, 9},
@@ -303,7 +314,7 @@ namespace Task01.NUnitTests
                     new int[] {0, -22, 41, 65},
                     new int[] {114, -262}
                 },
-                new ComparerDecreasingMinOfElems(),
+                comparerDecreasingMinOfElems,
                 new int[][]
                 {
                     new int[] {114, -262},
@@ -316,7 +327,7 @@ namespace Task01.NUnitTests
                     new int[] {0, -22, 41, 65},
                     new int[] {114, -262}
                 },
-                new ComparerDecreasingMinOfElems(),
+                comparerDecreasingMinOfElems,
                 new int[][]
                 {
                     new int[] {114, -262},
@@ -329,7 +340,7 @@ namespace Task01.NUnitTests
                     new int[] {0, 25, 4456, 4566},
                     new int[] {114, 622}
                 },
-                new ComparerDecreasingMinOfElems(),
+                comparerDecreasingMinOfElems,
                 new int[][]
                 {
                     new int[] {0, 25, 4456, 4566},

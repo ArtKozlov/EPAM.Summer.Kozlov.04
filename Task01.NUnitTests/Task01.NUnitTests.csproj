@@ -52,6 +52,8 @@
     <Compile Include="ComparerDecreasingMinOfElems.cs" />
     <Compile Include="ComparerDecreasingSumOfElems.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SortJaggedArrayWithDelegateTests.cs" />
+    <Compile Include="SortJaggedArrayWithInterfaceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
