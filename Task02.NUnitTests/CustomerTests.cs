@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using NUnit.Framework;
 
 namespace Task02.NUnitTests
@@ -15,20 +16,20 @@ namespace Task02.NUnitTests
         public string PositiveTestGetCustomerInfo(string name, decimal revanue, string contactPhone, string format)
         {
             Customer client = new Customer(name, revanue, contactPhone);
-            return client.ToString(format);
+            return client.ToString(format, new FormatProvider());
         }
 
         [TestCase("artyom", 1000, "+375(44)1111111", "Re")]
         public void InputBadFormatForGetCustomerInfo(string name, decimal revanue, string contactPhone, string format)
         {
             Customer client = new Customer(name, revanue, contactPhone);
-            Assert.Throws<FormatException>(() => client.ToString(format));
+            Assert.Throws<FormatException>(() => client.ToString(format, new FormatProvider()));
         }
         [TestCase("artyom", 1000, "+375(44)1111111", null)]
         public void InputArgumentNullForGetCustomerInfo(string name, decimal revanue, string contactPhone, string format)
         {
             Customer client = new Customer(name, revanue, contactPhone);
-            Assert.Throws<ArgumentNullException>(() => client.ToString(format));
+            Assert.Throws<ArgumentNullException>(() => client.ToString(format, new FormatProvider()));
         }
     }
 }
